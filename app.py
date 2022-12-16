@@ -155,7 +155,8 @@ roster_type_dict = {
 
 def check_password():
     """Returns `True` if the user had the correct password."""
-
+    if 'show_upload' not in st.session_state:
+        st.session_state['show_upload'] = False
     def password_entered():
         """Checks whether a password entered by the user is correct."""
         if st.session_state["password"] == password:
@@ -172,7 +173,7 @@ def check_password():
         )
         return False
     elif not st.session_state["password_correct"]:
-        if not st.session_state["show_upload"]:
+        if 'show_upload' not in st.session_state:
             st.header("Input correct password to access")
             # Password not correct, show input + error.
             st.text_input(
@@ -210,8 +211,7 @@ if __name__ == "__main__":
             # if file is uploaded, transform doctor roster into dataframe
             clean_roster = transform_dr_roster(uploaded_file)
             st.dataframe(clean_roster)
-            if 'show_upload' not in st.session_state:
-                st.session_state['show_upload'] = False
+
             validate_button = st.button("Validate")
             if validate_button:
                 for i in pTable.all(fields="Initials"):
