@@ -53,7 +53,7 @@ def crud(table, records):
 
     # Read out array sizes
     print("\n{} records to create".format(len(recordsToCreate)))
-    print("{} records to update".format(len(recordsToUpdate)))
+    print("{} records to update".format(len(recordsToDelete)))
     st.info("{} records to create.\n{} records to update. This will take quite a while".format(
         len(recordsToCreate), len(recordsToDelete)))
     # Perform record delete on existing records
