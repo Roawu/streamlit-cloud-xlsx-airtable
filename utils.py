@@ -30,11 +30,10 @@ def process_dr_schedule(schedule, daschedule, roster_date, location, shift):
         if s == "-":
             s = ""
         if d == 0:
-            d = ""
-        print(date)
-        print(type(date))
-        if date == "00:00:00":
-            continue           
+            d = ""        
+        if date == DateTime.MinValue:
+            print(date)
+            print(type(date))           
         # room = 1
         output.append(
             {
@@ -53,8 +52,9 @@ def process_ahq_schedule(daschedule, roster_date, location, shift):
     for d, date in zip(daschedule.values, roster_date):
         if d == 0:
             d = ""
-        if date == "00:00:00":
-            continue
+        if date == DateTime.MinValue:
+            print(date)
+            print(type(date))
         # room = 1
         output.append(
             {
