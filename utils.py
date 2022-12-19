@@ -33,8 +33,7 @@ def process_dr_schedule(schedule, daschedule, roster_date, location, shift):
         if d == 0:
             d = ""        
         if isinstance(date, datetime.time):
-            print(date)
-            print(type(date))          
+            continue        
         # room = 1
         output.append(
             {
@@ -54,8 +53,7 @@ def process_ahq_schedule(daschedule, roster_date, location, shift):
         if d == 0:
             d = ""
         if isinstance(date, datetime.time):
-            print(date)
-            print(type(date))
+            continue
         # room = 1
         output.append(
             {
