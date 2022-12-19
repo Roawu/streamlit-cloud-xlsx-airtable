@@ -259,7 +259,7 @@ if __name__ == "__main__":
                         logging.info("Total doctor schedule: {}".format(
                             filtered_roster.shape[0]))
                         for i, row in filtered_roster.iterrows():
-                            if row['clinic']:
+                            if row['date']:
                                 row["staff"] = row["staff"].replace(" ", ", ")
                                 row["DAs"] = str(row["DAs"])
                                 row["DAs"] = row["DAs"].replace(" ", ", ")
