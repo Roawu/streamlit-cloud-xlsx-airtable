@@ -31,7 +31,6 @@ def process_dr_schedule(schedule, daschedule, roster_date, location, shift):
             s = ""
         if d == 0:
             d = ""
-        if d == "" and s == "":
         # room = 1
         output.append(
             {
@@ -50,7 +49,6 @@ def process_ahq_schedule(daschedule, roster_date, location, shift):
     for d, date in zip(daschedule.values, roster_date):
         if d == 0:
             d = ""
-        if d == "":
         # room = 1
         output.append(
             {
