@@ -289,5 +289,6 @@ if __name__ == "__main__":
                         logging.info("Done creating schedules in Airtable")
                         st.info("Done creating schedules in Airtable")
                         st.session_state['show_upload'] = False
+                        st.session_state["password_correct"] = True
 
 
