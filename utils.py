@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 from pyairtable import Table
+import datetime
 
 # clinic code maps
 
