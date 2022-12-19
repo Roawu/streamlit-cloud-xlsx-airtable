@@ -31,7 +31,7 @@ def process_dr_schedule(schedule, daschedule, roster_date, location, shift):
             s = ""
         if d == 0:
             d = ""        
-        if !date.HasValue:
+        if date:
             print(date)
             print(type(date))           
         # room = 1
@@ -52,7 +52,7 @@ def process_ahq_schedule(daschedule, roster_date, location, shift):
     for d, date in zip(daschedule.values, roster_date):
         if d == 0:
             d = ""
-        if !date.HasValue:
+        if date:
             print(date)
             print(type(date))
         # room = 1
