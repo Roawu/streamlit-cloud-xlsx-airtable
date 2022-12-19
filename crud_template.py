@@ -28,7 +28,7 @@ def crud(table, records):
 
     # Create two arrays: one for records to be created, one for records to be updated
     recordsToCreate = []
-    recordsToDelete = []
+    recordsToUpdate = []
     # For each input record, check if it exists in the existing records. If it does, update it. If it does not, create it.
     st.info('Processing {} input records to determine whether to update or create. Please wait'.format(
         len(inputRecords)))
@@ -43,9 +43,8 @@ def crud(table, records):
         # and if the upsert field value matches an existing one...
         if existingRecordIdBasedOnUpsertFieldValueMaybe:
             # Add record to list of records to update
-            recordsToDelete.append(existingRecordIdBasedOnUpsertFieldValueMaybe)
-            recordsToCreate.append(inputRecord)
-                
+            recordsToUpdate.append(
+                dict(id=existingRecordIdBasedOnUpsertFieldValueMaybe, fields=inputRecord))
         else:
             # Otherwise, add record to list of records to create
             # print('\t\tNo existing records match; adding to recordsToCreate')
@@ -54,13 +53,14 @@ def crud(table, records):
 
     # Read out array sizes
     print("\n{} records to create".format(len(recordsToCreate)))
-    print("{} records to update".format(len(recordsToDelete)))
+    print("{} records to update".format(len(recordsToUpdate)))
     st.info("{} records to create.\n{} records to update. This will take quite a while".format(
-        len(recordsToCreate) - len(recordsToDelete), len(recordsToDelete)))
-    # Perform record delete on existing records
-    table.batch_delete(recordsToDelete)
+        len(recordsToCreate), len(recordsToUpdate)))
+
     # Perform record creation
     table.batch_create(recordsToCreate, typecast=True)
+    # Perform record updates on existing records
+    table.batch_update(recordsToUpdate, typecast=True)
 
     
 
