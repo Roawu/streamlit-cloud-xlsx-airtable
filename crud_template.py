@@ -35,6 +35,7 @@ def crud(table, records):
     for inputRecord in inputRecords:
         inputRecord['DateNo'] = str(inputRecord['DateNo'])
         recordUniqueValue = f'{inputRecord["Clinic"]}{inputRecord["DateNo"]}{inputRecord["Session"]}'
+        print(recordUniqueValue)
 
         existingRecordIdBasedOnUpsertFieldValueMaybe = upsertFieldValueToExistingRecordId.get(
             recordUniqueValue)
