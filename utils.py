@@ -31,6 +31,7 @@ def process_dr_schedule(schedule, daschedule, roster_date, location, shift):
             s = ""
         if d == 0:
             d = ""
+        print(date)
         if date == "00:00:00":
             continue           
         # room = 1
