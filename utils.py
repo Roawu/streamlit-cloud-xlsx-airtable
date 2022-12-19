@@ -32,6 +32,7 @@ def process_dr_schedule(schedule, daschedule, roster_date, location, shift):
         if d == 0:
             d = ""
         print(date)
+        print(type(date))
         if date == "00:00:00":
             continue           
         # room = 1
@@ -53,7 +54,7 @@ def process_ahq_schedule(daschedule, roster_date, location, shift):
         if d == 0:
             d = ""
         if date == "00:00:00":
-            pass
+            continue
         # room = 1
         output.append(
             {
